@@ -17,7 +17,7 @@ public class Servico {
 		this.valor = valor;		
 	}
 	
-	public void exibirInformações() {
+	public void exibirInformacoes() {
 		System.out.println("Nome do serviço: " + nome);
 		System.out.println("Descrição do serviço: " + descricao);
 		System.out.println("Descrição do serviço: " + valor);
@@ -26,7 +26,7 @@ public class Servico {
 	public void cadastrarNovoServico(Scanner leitor) {
 		this.leitor = leitor;
 		
-		System.out.println("Digite o nome do nome serviço");
+		System.out.println("Digite o nome do serviço");
 		String nomeDigitado = leitor.next();
 		
 		System.out.println("Digite a descrição do serviço");
@@ -39,7 +39,11 @@ public class Servico {
 		this.descricao = descricaoDigitada;
 		this.valor = valorDigitado;
 		
-		exibirInformações();
+		exibirInformacoes();
+	}
+	
+	public void listarTodosServicos() {
+		Servico.exibirInformacoes();
 	}
 
 }
