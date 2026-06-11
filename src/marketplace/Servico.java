@@ -57,25 +57,37 @@ public class Servico {
 		System.out.println("\n");
 	}
 	
-	public  void cadastrarNovoServico(Scanner leitor) {
+	public void cadastrarNovoServico(Scanner leitor) {
 		this.leitor = leitor;
+		System.out.println("---Cadastrar novo serviço--\n");
 		
-		System.out.println("Digite o nome do serviço");
-		String nomeDigitado = leitor.next();
+		System.out.println("Digite o nome do novo serviço");
+		String nomeDigitado = leitor.nextLine();
 		
-		System.out.println("Digite a descrição do serviço");
-		String descricaoDigitada = leitor.next();
+		while(nomeDigitado.isEmpty()) {
+			System.out.println("Erro: O serviço precisa de um nome.");
+			System.out.println("Digite um nome:");
+			nomeDigitado = leitor.nextLine();
+		}
 		
-		System.out.println("Digite o valor do serviço");
+		System.out.println("Digite a descrição do novo serviço");
+		String descricaoDigitada = leitor.nextLine();
+		
+		System.out.println("Digite o valor do novo serviço");
 		float valorDigitado = leitor.nextFloat();
+		
+		while(valorDigitado < 0) {
+			System.out.println("Erro: o valor do serviço não pode ser negativo");
+			System.out.println("Digite um valor válido.");
+			valorDigitado = leitor.nextFloat();
+		}
 		
 		this.nome = nomeDigitado;
 		this.descricao = descricaoDigitada;
 		this.valor = valorDigitado;
 		
-		todosOsServicos.add(this);
-		
-		System.out.println("Serviço adicionado com sucesso!\n");
+			todosOsServicos.add(this);
+			System.out.println("Novo serviço cadastrado com sucesso!\n");
 	}
 	
 	public static List<Servico> getTodosOsServicos() {
@@ -90,17 +102,13 @@ public class Servico {
 		}
 	}
 	
+	//Revisar esse método dps
 	public static Servico buscarPorNome(String nomeBuscado) {
-	    // Usando o for-each para varrer a lista de serviços
 	    for (Servico s : todosOsServicos) {
-	        
-	        // Compara o nome do serviço atual com o nome que estamos buscando
 	        if (s.getNome().equalsIgnoreCase(nomeBuscado)) {
-	            return s; // Se encontrou, devolve o serviço completo e para o método na hora!
+	            return s; 
 	        }
 	    }
-	    
-	    // Se o "for" terminar e não encontrar nada, devolve null (vazio)
 	    return null; 
 	}
 
