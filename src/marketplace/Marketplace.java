@@ -35,20 +35,8 @@ public class Marketplace {
 		} else {
 		    System.out.println("Erro: Nenhum serviço cadastrado com o nome '" + busca + "'.");
 		} */
-		double valorServico = 150.0;
-
-Pagamento pix = new PagamentoPix();
-Pagamento cartao = new PagamentoCartaoCredito();
-Pagamento boleto = new PagamentoBoleto();
-
-System.out.println("PIX: R$ " +
-        pix.calcularValorFinal(valorServico));
-
-System.out.println("Cartão: R$ " +
-        cartao.calcularValorFinal(valorServico));
-
-System.out.println("Boleto: R$ " +
-        boleto.calcularValorFinal(valorServico));
+		
+		
 		
 		scanner.close();
 	}
