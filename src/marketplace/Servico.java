@@ -49,7 +49,8 @@ public class Servico {
 	public void setValorServico(Float valorServico) {
 		this.valorServico = valorServico;
 	}
-
+	
+	//Exibe informações individuais de um serviço
 	public void exibirInformacoes() {
 		System.out.println("Nome do serviço: " + nome);
 		System.out.println("Descrição do serviço: " + descricao);
@@ -57,7 +58,7 @@ public class Servico {
 		System.out.println("\n");
 	}
 	
-	//Cadastrar novo serviço
+	//Cadastra novo serviço
 	public void cadastrarNovoServico(Scanner leitor) {
 		this.leitor = leitor;
 		System.out.println("---Cadastrar novo serviço--\n");
@@ -104,7 +105,7 @@ public class Servico {
 	}
 	
 	
-	//Busca de serviço 
+	//Pede para o usuario buscar o serviço
 	/*System.out.println("Digite o nome do serviço que deseja buscar:");
 	String busca = scanner.nextLine();		
 	
@@ -124,9 +125,12 @@ public class Servico {
 	            return s; 
 	        }
 	    }
+	    
 	    return null; 
 	}
 	
+	
+	/*
 	public  void  exibirResumoCompra(Scanner leitor) {	
 		String nome;
 		String servicoBuscado;
@@ -165,6 +169,6 @@ public class Servico {
 		System.out.println("Pedido realizado com sucesso! ");
 		System.out.println("=================================");				
 		
-	}
+	}*/
 
 }

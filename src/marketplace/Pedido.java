@@ -2,11 +2,12 @@ package marketplace;
 
 import java.util.Scanner;
 
-public class Pedido extends Servico  {
+public class Pedido {
 	String nome;
 	Scanner leitor;
 	String servicoBuscado;
-	
+	Servico servico;
+	Pagamento formaPagamento;
 
 	
 	public Pedido(Scanner leitor) {
@@ -15,9 +16,6 @@ public class Pedido extends Servico  {
 		
 		System.out.println("Digite o nome do serviço de sua escolha: ");
 		servicoBuscado = leitor.nextLine();
-		
-		/*System.out.println("Digite o nome do serviço que deseja buscar:");
-		String busca = scanner.nextLine();	
 		
 		Servico servicoEncontrado = Servico.buscarPorNome(servicoBuscado);
 		
@@ -29,12 +27,16 @@ public class Pedido extends Servico  {
 		}
 		
 		System.out.println("Digite a forma de pagamento de sua escolha: ");*/
+		
+		this.leitor = leitor;
+		//this.servico = servico;
 
-	}
-	
-	
+	}	
 	
 	public  void  exibirResumoCompra(Scanner leitor) {	
+		String nome;
+		String servicoBuscado;
+		String formaPagamentoBuscada;
 		
 		System.out.println("Digite o seu nome: ");
 		nome = leitor.nextLine();
@@ -53,6 +55,26 @@ public class Pedido extends Servico  {
 		}   
 		
 		System.out.println("Digite a forma de pagamento de sua escolha: ");
+		System.out.println("Escolha: 1-Pix, 2-Boleto, 3-Cartão de Crédito");
+	    int escolha = leitor.nextInt();
+	    
+	    if (escolha == 1) {
+	        this.formaPagamento = new PagamentoPix();
+	        formaPagamentoBuscada = "PIX";
+	        } else if (escolha == 2) {
+	        this.formaPagamento = new PagamentoBoleto();
+	        formaPagamentoBuscada = "Boleto";
+
+	    } else {
+	    	this.formaPagamento = new PagamentoCartaoCredito();
+	        formaPagamentoBuscada = "Cartão de Crédito";
+
+	    }
+	    
+		//formaPagamentoBuscada = leitor.nextLine();
+		
+		//Pagamento formaPagamento = formaPagamentoBuscada;
+
 		
 		
 		System.out.println("=================================");
@@ -61,16 +83,16 @@ public class Pedido extends Servico  {
 		System.out.println("Cliente: " + nome +  "\n");
 		
 		System.out.println(	"Serviço: " + servicoBuscado +  "\n");
-		System.out.println("Valor Original: " + getValor() +  "\n");
+		System.out.println("Valor Original: R$" + servicoEncontrado.getValorServico() +  "\n");
 		
-		System.out.println("Forma de Pagamento: ");
-		//System.out.println("Taxa Aplicada: " +  "\n"); //depois fazer a classe "enxergar" a taxa e imprimir aqui
+		System.out.println("Forma de Pagamento: " + formaPagamentoBuscada);
 		
-		System.out.println("Valor Final: ");
+		System.out.println("Taxa Aplicada: " + formaPagamento.getValorTaxa() + "\n"); 
+		
+		System.out.println("Valor Final: " +  formaPagamento.calcularValorFinal(servicoEncontrado.getValorServico()));
 		System.out.println("Pedido realizado com sucesso! ");
 		System.out.println("=================================");				
 		
 	}
-
 }
 
