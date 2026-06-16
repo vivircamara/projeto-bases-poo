@@ -53,7 +53,7 @@ public class Servico {
 	public void exibirInformacoes() {
 		System.out.println("Nome do serviço: " + nome);
 		System.out.println("Descrição do serviço: " + descricao);
-		System.out.println("Descrição do serviço: " + valor);
+		System.out.println("Valor do serviço: R$ " + valor);
 		System.out.println("\n");
 	}
 	
