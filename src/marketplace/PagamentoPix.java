@@ -1,7 +1,8 @@
 package marketplace;
 
-public class PagamentoPix implements Pagamento {
+//import java.util.Scanner;
 
+public class PagamentoPix extends Servico implements Pagamento {
     @Override
     public double calcularValorFinal(double valorServico) {
         return valorServico;
@@ -11,4 +12,12 @@ public class PagamentoPix implements Pagamento {
     public String getTipoPagamento() {
         return "PIX";
     }
+    
+    @Override
+    public double  getValorTaxa() {
+        return 0;
+    }
+    
+    
+	
 }
