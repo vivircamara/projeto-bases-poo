@@ -12,16 +12,7 @@ public class Menu {
 
     public void exibeOpcoes(Servico servico){
         while (true){
-            System.out.println("=================================");
-            System.out.println("    MARKETPLACE DE SERVIÇOS");
-            System.out.println("=================================");
-            System.out.println("1 - Listar serviços");
-            System.out.println("2 - Cadastrar serviço");
-            System.out.println("3 - Buscar serviço");
-            System.out.println("4 - Realizar pedido");
-            System.out.println("5 - Sair");
-            System.out.println("=================================");
-            System.out.print("Escolha uma opção: ");
+            escreveInterface();
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao){
@@ -52,6 +43,19 @@ public class Menu {
                     System.out.println("Opção Inválida!");
             }
         }
+    }
+
+    public void escreveInterface(){
+        System.out.println("=================================");
+        System.out.println("    MARKETPLACE DE SERVIÇOS");
+        System.out.println("=================================");
+        System.out.println("1 - Listar serviços");
+        System.out.println("2 - Cadastrar serviço");
+        System.out.println("3 - Buscar serviço");
+        System.out.println("4 - Realizar pedido");
+        System.out.println("5 - Sair");
+        System.out.println("=================================");
+        System.out.print("Escolha uma opção: ");
     }
 
 }
