@@ -77,11 +77,13 @@ public class Servico {
 		
 		System.out.println("Digite o valor do novo serviço");
 		float valorDigitado = leitor.nextFloat();
+		leitor.nextLine();
 		
 		while(valorDigitado < 0) {
 			System.out.println("Erro: o valor do serviço não pode ser negativo");
 			System.out.println("Digite um valor válido.");
 			valorDigitado = leitor.nextFloat();
+			leitor.nextLine();
 		}
 		
 		this.nome = nomeDigitado;
@@ -97,27 +99,18 @@ public class Servico {
     }
 	
 	public static void listarTodosServicos() {
+		if (todosOsServicos.isEmpty()) {
+			System.out.println("Nenhum serviço cadastrado.");
+			return;
+		}
+
 		System.out.println("--- Lista de serviços criados ---");
-		
-		for (Servico s : Servico.getTodosOsServicos()) {
+
+		for (Servico s : todosOsServicos) {
 			s.exibirInformacoes();
 		}
 	}
-	
-	
-	//Pede para o usuario buscar o serviço
-	/*System.out.println("Digite o nome do serviço que deseja buscar:");
-	String busca = scanner.nextLine();		
-	
-	Servico servicoEncontrado = Servico.buscarPorNome(busca);
-	
-	if (servicoEncontrado != null) {
-	    System.out.println("--- Serviço Encontrado! ---");
-	    servicoEncontrado.exibirInformacoes(); // Mostra os dados dele
-	} else {
-	    System.out.println("Erro: Nenhum serviço cadastrado com o nome '" + busca + "'.");
-	} */
-	
+
 	//Revisar esse método dps
 	public static Servico buscarPorNome(String servicoBuscado) {
 	    for (Servico s : todosOsServicos) {
@@ -128,47 +121,5 @@ public class Servico {
 	    
 	    return null; 
 	}
-	
-	
-	/*
-	public  void  exibirResumoCompra(Scanner leitor) {	
-		String nome;
-		String servicoBuscado;
-		
-		System.out.println("Digite o seu nome: ");
-		nome = leitor.nextLine();
-		
-		System.out.println("Digite o nome do serviço de sua escolha: ");
-		servicoBuscado = leitor.nextLine();
-		
-		Servico servicoEncontrado = Servico.buscarPorNome(servicoBuscado);
-		
-		while (servicoEncontrado == null) {
-		   // System.out.println("--- Serviço Encontrado! ---");
-		    //servicoEncontrado.exibirInformacoes(); // Mostra os dados dele
-			System.out.println("Erro: Nenhum serviço cadastrado com o nome '" + servicoBuscado + "'.");
-			System.out.println("Digite o nome de um serviço existente: ");
-			servicoBuscado = leitor.nextLine();
-		}   
-		
-		System.out.println("Digite a forma de pagamento de sua escolha: ");
-		
-		
-		System.out.println("=================================");
-		System.out.println("RESUMO DO PEDIDO");
-		System.out.println("=================================");
-		System.out.println("Cliente: " + nome +  "\n");
-		
-		System.out.println(	"Serviço: " + servicoBuscado +  "\n");
-		System.out.println("Valor Original: " + getValorServico() +  "\n");
-		
-		System.out.println("Forma de Pagamento: ");
-		System.out.println("Taxa Aplicada: " + getValorTaxa() + "\n"); 
-		
-		System.out.println("Valor Final: " +  calcularValorFinal(valorServico));
-		System.out.println("Pedido realizado com sucesso! ");
-		System.out.println("=================================");				
-		
-	}*/
 
 }
