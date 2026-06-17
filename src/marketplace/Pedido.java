@@ -6,49 +6,22 @@ public class Pedido {
 	String nome;
 	Scanner leitor;
 	String servicoBuscado;
-	Servico servico;
 	Pagamento formaPagamento;
 
-	
-	public Pedido(Scanner leitor) {
-		/*System.out.println("Digite o seu nome: " + nome);
-		this.nome = leitor.nextLine();
-		
-		System.out.println("Digite o nome do serviço de sua escolha: ");
-		servicoBuscado = leitor.nextLine();
-		
-		Servico servicoEncontrado = Servico.buscarPorNome(servicoBuscado);
-		
-		if (servicoEncontrado != null) {
-		    System.out.println("--- Serviço Encontrado! ---");
-		    servicoEncontrado.exibirInformacoes(); // Mostra os dados dele
-		} else {
-		    System.out.println("Erro: Nenhum serviço cadastrado com o nome '" + servicoBuscado + "'.");
-		}
-		
-		System.out.println("Digite a forma de pagamento de sua escolha: ");*/
-		
-		this.leitor = leitor;
-		//this.servico = servico;
-
-	}	
-	
-	public  void  exibirResumoCompra(Scanner leitor) {	
-		String nome;
-		String servicoBuscado;
+	public void  exibirResumoCompra(Scanner leitor, Servico servico) {
 		String formaPagamentoBuscada;
-		
+
 		System.out.println("Digite o seu nome: ");
 		nome = leitor.nextLine();
-		
+
+		Servico.listarTodosServicos();
 		System.out.println("Digite o nome do serviço de sua escolha: ");
 		servicoBuscado = leitor.nextLine();
 		
 		Servico servicoEncontrado = Servico.buscarPorNome(servicoBuscado);
 		
 		while (servicoEncontrado == null) {
-		   // System.out.println("--- Serviço Encontrado! ---");
-		    //servicoEncontrado.exibirInformacoes(); // Mostra os dados dele
+			// Mostra os dados dele
 			System.out.println("Erro: Nenhum serviço cadastrado com o nome '" + servicoBuscado + "'.");
 			System.out.println("Digite o nome de um serviço existente: ");
 			servicoBuscado = leitor.nextLine();
@@ -70,13 +43,7 @@ public class Pedido {
 	        formaPagamentoBuscada = "Cartão de Crédito";
 
 	    }
-	    
-		//formaPagamentoBuscada = leitor.nextLine();
-		
-		//Pagamento formaPagamento = formaPagamentoBuscada;
 
-		
-		
 		System.out.println("=================================");
 		System.out.println("RESUMO DO PEDIDO");
 		System.out.println("=================================");
