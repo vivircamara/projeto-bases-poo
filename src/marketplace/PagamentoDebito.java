@@ -1,6 +1,6 @@
 package marketplace;
 
-public class Debito implements Pagamento {
+public class PagamentoDebito implements Pagamento {
 	double taxa =  0.01; 
 	
     @Override

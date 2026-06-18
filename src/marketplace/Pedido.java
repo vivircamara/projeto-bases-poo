@@ -60,7 +60,7 @@ public class Pedido {
 				formaPagamento = new PagamentoCarteiraDigital();
 				return "Carteira digital";
 			default:
-				formaPagamento = new Debito();
+				formaPagamento = new PagamentoDebito();
 				return "Débito";
 				
 		}
