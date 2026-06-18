@@ -39,7 +39,7 @@ public class Pedido {
 
 	private String selecionarFormaPagamento(Scanner leitor) {
 		System.out.println("Digite a forma de pagamento de sua escolha: ");
-		System.out.println("Escolha: 1-Pix, 2-Boleto, 3-Cartão de Crédito");
+		System.out.println("1-Pix               2-Boleto\n3-Cartão de Crédito 4-Cripto Moeda\n5-Carteira Digital  6-Débito");
 
 		int escolha = leitor.nextInt();
 		leitor.nextLine();
@@ -50,9 +50,19 @@ public class Pedido {
 			case 2:
 				formaPagamento = new PagamentoBoleto();
 				return "Boleto";
-			default:
+			case 3:
 				formaPagamento = new PagamentoCartaoCredito();
 				return "Cartão de Crédito";
+			case 4:
+				formaPagamento = new PagamentoCriptoMoeda();
+				return "Cripto moeda";
+			case 5:
+				formaPagamento = new PagamentoCarteiraDigital();
+				return "Carteira digital";
+			default:
+				formaPagamento = new Debito();
+				return "Débito";
+				
 		}
 	}
 
@@ -65,7 +75,7 @@ public class Pedido {
 		System.out.println("Serviço: " + servicoBuscado + "\n");
 		System.out.println("Valor Original: R$" + servicoEncontrado.getValorServico() + "\n");
 		System.out.println("Forma de Pagamento: " + formaPagamentoBuscada);
-		System.out.println("Taxa Aplicada: " + formaPagamento.getValorTaxa() + "\n");
+		System.out.println("Taxa Aplicada: " + formaPagamento.getValorTaxa() * 100 + "%\n");
 		System.out.println("Valor Final: " + formaPagamento.calcularValorFinal(servicoEncontrado.getValorServico()));
 		System.out.println("Pedido realizado com sucesso!");
 		System.out.println("=================================");
