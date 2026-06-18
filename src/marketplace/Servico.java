@@ -5,27 +5,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Servico {
-	//atributos
+	//ATRIBUTOS
 	private String nome;
 	private String descricao;
 	private Float valorServico;
-	Scanner leitor;
+	private Scanner leitor;
+	private static List<Servico> todosOsServicos = new ArrayList<>(List.of(
+		 new Servico("Criação de Logo", "Serviço para criação de logo.", 150),
 	
-	private static List<Servico> todosOsServicos = new ArrayList<>();
-	
-	public Servico(String nome, String descricao, float valorServico) {
+		 new Servico("Desenvolvimento de Site", "Serviço para desenvolvimento de site" , 2500),//como formatar para 2.500?
 		
+		 new Servico("Consultoria em TI", "Serviço de consultoria em T.I", 400)
+			
+	));
+	
+	//CONSTRUTOR 
+	public Servico(String nome, String descricao, float valorServico) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valorServico = valorServico;
-		
-		todosOsServicos.add(this);
+	
+	}	
+	
+	//CONSTRUTOR VAZIO - CADASTRAR NOVO USUÁRIO
+	public Servico(Scanner scannerDoMenu) {
+		this.leitor = scannerDoMenu;
 	}
 	
-	public Servico() {
-		
-	}
-	
+	//MÉTODOS GETTERS E SETTERS
 	public String getNome() {
 		return nome;
 	}
@@ -50,6 +57,7 @@ public class Servico {
 		this.valorServico = valorServico;
 	}
 	
+	//MÉTODOS	
 	//Exibe informações individuais de um serviço
 	public void exibirInformacoes() {
 		System.out.println("Nome do serviço: " + nome);
@@ -59,8 +67,9 @@ public class Servico {
 	}
 	
 	//Cadastra novo serviço
-	public void cadastrarNovoServico(Scanner leitor) {
-		this.leitor = leitor;
+	//public void cadastrarNovoServico(Scanner leitor) {
+	public void cadastrarNovoServico() {
+		//this.leitor = leitor;
 		System.out.println("---Cadastrar novo serviço--\n");
 		
 		System.out.println("Digite o nome do novo serviço");
@@ -98,6 +107,7 @@ public class Servico {
         return todosOsServicos;
     }
 	
+	//Lista todos os serviços
 	public static void listarTodosServicos() {
 		if (todosOsServicos.isEmpty()) {
 			System.out.println("Nenhum serviço cadastrado.");
@@ -110,11 +120,14 @@ public class Servico {
 			s.exibirInformacoes();
 		}
 	}
-
-	//Revisar esse método dps
+	//Realiza a busca dos serviços
 	public static Servico buscarPorNome(String servicoBuscado) {
+	//public static Servico buscarPorNome() {
+		/*System.out.println("Digite o serviço a ser buscado: ");
+        String opcaoBuscada = leitor.nextLine();*/
 	    for (Servico s : todosOsServicos) {
 	        if (s.getNome().equalsIgnoreCase(servicoBuscado)) {
+	    	//if (s.getNome().equalsIgnoreCase(opcaoBuscada)) {
 	            return s; 
 	        }
 	    }

@@ -3,14 +3,20 @@ package marketplace;
 import java.util.Scanner;
 
 public class Menu {
+	//ATRIBUTOS
     private Scanner scanner;
+    private Servico servico;
     private int opcao;
-
+    
+    //CONSTRUTOR
     public Menu(){
         scanner = new Scanner(System.in);
+        servico = new Servico(scanner);
     }
-
-    public void exibeOpcoes(Servico servico){
+    
+    //MÉTODOS
+    //Exibe as opções do menu
+    public void exibeOpcoes(){
         while (true){
             escreveInterface();
             opcao = scanner.nextInt();
@@ -20,12 +26,13 @@ public class Menu {
                     Servico.listarTodosServicos();
                     break;
                 case 2:
-                    servico.cadastrarNovoServico(scanner);
+                    servico.cadastrarNovoServico();
                     break;
                 case 3:
                     System.out.println("Digite o serviço a ser buscado: ");
                     String opcaoBuscada = scanner.nextLine();
                     Servico resServico = Servico.buscarPorNome(opcaoBuscada);
+                    //Servico resServico = Servico.buscarPorNome();
                     if (resServico != null) {
                         System.out.println("Serviço encontrado!");
                         resServico.exibirInformacoes();
@@ -38,13 +45,15 @@ public class Menu {
                     pedido.exibirResumoCompra(scanner, servico);
                     break;
                 case 5:
+                	scanner.close();
                     return;
                 default:
                     System.out.println("Opção Inválida!");
             }
         }
     }
-
+    
+    //Cria a interface no console
     public void escreveInterface(){
         System.out.println("=================================");
         System.out.println("    MARKETPLACE DE SERVIÇOS");
@@ -57,5 +66,4 @@ public class Menu {
         System.out.println("=================================");
         System.out.print("Escolha uma opção: ");
     }
-
 }

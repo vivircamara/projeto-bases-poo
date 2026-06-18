@@ -2,7 +2,7 @@ package marketplace;
 
 //import java.util.Scanner;
 
-public class PagamentoPix extends Servico implements Pagamento {
+public class PagamentoPix implements Pagamento {
     @Override
     public double calcularValorFinal(double valorServico) {
         return valorServico;
