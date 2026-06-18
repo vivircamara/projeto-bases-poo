@@ -32,7 +32,6 @@ public class Menu {
                     System.out.println("Digite o serviço a ser buscado: ");
                     String opcaoBuscada = scanner.nextLine();
                     Servico resServico = Servico.buscarPorNome(opcaoBuscada);
-                    //Servico resServico = Servico.buscarPorNome();
                     if (resServico != null) {
                         System.out.println("Serviço encontrado!");
                         resServico.exibirInformacoes();

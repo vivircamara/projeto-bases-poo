@@ -122,12 +122,8 @@ public class Servico {
 	}
 	//Realiza a busca dos serviços
 	public static Servico buscarPorNome(String servicoBuscado) {
-	//public static Servico buscarPorNome() {
-		/*System.out.println("Digite o serviço a ser buscado: ");
-        String opcaoBuscada = leitor.nextLine();*/
 	    for (Servico s : todosOsServicos) {
 	        if (s.getNome().equalsIgnoreCase(servicoBuscado)) {
-	    	//if (s.getNome().equalsIgnoreCase(opcaoBuscada)) {
 	            return s; 
 	        }
 	    }
